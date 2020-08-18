@@ -1,0 +1,14 @@
+.wolcome {
+  width: 400px;
+  height: 400px;
+  display: block;
+  margin: 0 auto;
+  background-image: url('../../../assets/andy.jpg');
+  background-repeat: round;
+}
+
+.wolcome-title {
+  padding-top: 20px;
+  color: red;
+  text-align: center;
+}

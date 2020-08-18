@@ -1,0 +1,15 @@
+{
+  // "env": {
+  //   "development": {
+  //     "presets": [
+  //       ["@babel/preset-react", {
+  //         "development": true
+  //       }]
+  //     ]
+  //   }
+  // },
+  // 先对react语法进行转换，再对es6语法进行转换。
+  "presets": ["@babel/preset-react"],
+  // import异步加载模块
+  "plugins": ["@babel/plugin-syntax-dynamic-import"]
+}

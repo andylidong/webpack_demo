@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@src": ["./src"],
+      "@utils": ["./src/utils"],
+      "@components": ["./src/components"],
+    },
+    // jsx 导入跳转
+    "jsx": "react-native", // 共有三种枚举： react, react-native, preserve
+  },
+}
