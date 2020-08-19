@@ -107,7 +107,7 @@ const commonConfig = {
         loader: require.resolve('url-loader'),
         options: {
           limit: 10000,
-          publicPath: getAPI().IMAGE_ADDRESS,
+          publicPath: getAPI().ASSETS_ADDRESS,
           name: 'static/images/[name].[hash:8].[ext]',
         },
       },

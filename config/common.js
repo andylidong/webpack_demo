@@ -37,10 +37,10 @@ const getAPI = () => {
   const nodeEnv = process.env.NODE_ENV || 'development';
   const env = {
     development: {
-      IMAGE_ADDRESS: 'http://localhost:9000',
+      ASSETS_ADDRESS: 'http://localhost:9000',
     },
     production: {
-      IMAGE_ADDRESS: 'http://localhost:5000/dist',
+      ASSETS_ADDRESS: 'http://localhost:5000/dist',
     },
   };
   return env[nodeEnv];
