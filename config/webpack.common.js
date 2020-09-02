@@ -8,8 +8,8 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const commonConfig = {
   entry: {
-    web: './src/modules/web/index.js',
-    app: './src/modules/app/index.js',
+    web: './src/pages/web/index.js',
+    app: './src/pages/app/index.js',
   },
   output: {
     filename: 'static/js/[name].[hash:8].js',

@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/app.81d49db7.js","sources":["webpack:///./src/modules/app/Welcome/index.js"],"sourcesContent":["import React from 'react';\nimport './index.css';\n\nconst Welcome = () => (\n  <div className=\"wolcome\">\n    <p className=\"wolcome-title\">{'欢迎！！！！'}</p>\n  </div>\n);\n\nexport default Welcome;"],"mappings":"AASA","sourceRoot":""}
