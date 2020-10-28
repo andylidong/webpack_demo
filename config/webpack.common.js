@@ -98,7 +98,8 @@ const commonConfig = {
               },
             ],
             ['import',
-              { libraryName: 'antd', style: true }]
+              { libraryName: 'antd', style: true }
+            ]
           ],
           cacheDirectory: true,
           cacheCompression: false,
