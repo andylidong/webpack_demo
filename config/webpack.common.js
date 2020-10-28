@@ -97,6 +97,8 @@ const commonConfig = {
                 },
               },
             ],
+            ['import',
+              { libraryName: 'antd', style: true }]
           ],
           cacheDirectory: true,
           cacheCompression: false,
@@ -112,12 +114,21 @@ const commonConfig = {
         },
       },
       {
-        test: /\.(sa|sc|c)ss$/,
+        test: /\.(sa|sc|c|le)ss$/,
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
           'postcss-loader',
         ]
+      },
+      {
+        test: /\.less$/,
+        loader: 'less-loader',
+        options: {
+          lessOptions: {
+            javascriptEnabled: true
+          }
+        }
       },
       {
         test: [/\.eot$/, /\.svg$/, /\.ttf$/, /\.woff$/],
