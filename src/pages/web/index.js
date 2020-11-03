@@ -1,44 +1,49 @@
 /*
  * @Author: LD
  * @Date: 2020-08-24 11:14:32
- * @LastEditTime: 2020-10-29 11:40:45
+ * @LastEditTime: 2020-11-03 16:31:17
  * @LastEditors: LD
  * @FilePath: /webpack_demo/src/pages/web/index.js
  * @Description: 
  */
-import React, { useState } from 'react';
+import React from 'react';
 import './index.css';
 import ReactDOM from 'react-dom';
-import { add } from '@utils/common';
 import Son from './components/Son';
-import { Title, DynamicCreate, Image } from '@components';
 
-import { Provider } from './reduxs';
-
-const welcomeImage = require('../../assets/andy.jpg');
+import { Provider, createStore } from './reduxs';
 
 const initialState = { name: 'ld', age: 20 };
 
-const TestRedux = (data) => {
-  const { state } = data;
+const actions = { ADD: 'ADD' };
+
+const reducer = (state = initialState, action) => {
+  if (!action) return state;
+  switch (action.type) {
+    case actions.ADD:
+      let { age, name } = state;
+      age++;
+      name = `${name} ${age}`
+      return { ...state, age, name };
+    default:
+      return state;
+  }
+}
+
+
+const TestRedux = () => {
   return (
     <div style={{ border: '1px solid red', width: '60%', margin: '20px auto', textAlign: 'center' }}>
-      <p>父组件定义的值:{state.name}</p>
+      <p>父组件定义的值:{initialState.name}</p>
       <Son />
     </div>
   );
 }
 
 const App = () => {
-
-  const [state, setState] = useState(initialState)
-
   return (
-    <Provider value={state}>
-      <Title title={`web ${add([1, 2, 3, 4, 5])}`} />
-      <DynamicCreate setState={setState} state={state} />
-      <TestRedux state={state} />
-      <Image className="image" src={welcomeImage} style={{ width: 500, height: 500 }} />
+    <Provider value={createStore(reducer)}>
+      <TestRedux />
     </Provider >
   );
 };
