@@ -1,13 +1,14 @@
 /*
  * @Author: LD
  * @Date: 2020-08-24 11:14:32
- * @LastEditTime: 2020-11-10 09:16:25
+ * @LastEditTime: 2020-11-10 16:26:15
  * @LastEditors: LD
  * @FilePath: /webpack_demo/src/pages/web/index.js
  * @Description: 
  */
 import React from 'react';
 import './index.css';
+import { Button } from 'antd';
 import ReactDOM from 'react-dom';
 import Son from './components/Son';
 
@@ -42,6 +43,7 @@ const TestRedux = () => {
       alignItems: 'center',
       textAlign: 'center'
     }}>
+      <Button type="primary">{'测   试'}</Button>
       <p>父组件定义的值:{initialState.name}</p>
       <Son />
     </div>
