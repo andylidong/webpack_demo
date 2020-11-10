@@ -1,22 +1,34 @@
 /*
  * @Author: LD
  * @Date: 2020-10-28 16:09:45
- * @LastEditTime: 2020-11-03 16:33:05
+ * @LastEditTime: 2020-11-10 09:21:54
  * @LastEditors: LD
  * @FilePath: /webpack_demo/src/pages/web/components/GrandSon.js
  * @Description: 
  */
 import React from 'react';
-import { connect } from "../reduxs";
-const GrandSon = ({ age } = {}) => {
+import { useConnect } from '@src/hook/useRedux';
+
+
+const mapPropsToState = ({ age }) => {
+  return { age };
+};
+
+const GrandSon = () => {
+
+  const [state] = useConnect(mapPropsToState);
+
+  const { age } = state || {};
   return (
-    <div style={{ border: '1px solid green', width: '60%', margin: '50px auto', textAlign: 'center' }}>
+    <div style={{
+      border: '1px solid green',
+      width: '60%',
+      margin: '50px',
+      textAlign: 'center'
+    }}>
       <p>孙组件,获取传递下来的值:{age}</p>
     </div>
   );
 }
 
-const mapStateToProps = ({ age }) => {
-  return { age };
-};
-export default connect(mapStateToProps)(GrandSon);
+export default GrandSon;

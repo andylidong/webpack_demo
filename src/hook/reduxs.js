@@ -1,7 +1,7 @@
 /*
  * @Author: LD
  * @Date: 2020-10-28 16:19:42
- * @LastEditTime: 2020-11-03 16:42:46
+ * @LastEditTime: 2020-11-09 17:38:24
  * @LastEditors: LD
  * @FilePath: /webpack_demo/src/pages/web/reduxs.js
  * @Description: 
@@ -16,9 +16,9 @@ export const connect = (mapPropsToState) => Component => () => {
     <Consumer>
       {
         (store) => {
-          const { getState, dispatch, subscribe } = store;
+          const { getState, dispatch, addSubscriber } = store;
 
-          subscribe((data) => setState(data));
+          addSubscriber((data) => setState(data));
 
           return <Component {...mapPropsToState(state || getState())} dispatch={dispatch} />;
         }
@@ -26,8 +26,6 @@ export const connect = (mapPropsToState) => Component => () => {
     </Consumer>
   );
 }
-
-
 
 export const createStore = (reducer) => {
   let state;
@@ -37,15 +35,21 @@ export const createStore = (reducer) => {
     state = reducer(state, action);
     listeners.forEach(l => l(state));
   }
-  const subscribe = (listener) => {
+  const addSubscriber = (listener) => {
     listeners.push(listener);
     return () => {
       listeners = listeners.filter((l) => l != listener)
     }
   }
-  dispatch();
+  const removeSubscriber = (listener) => {
+    listeners.push(listener);
+    return () => {
+      listeners = listeners.filter((l) => l != listener)
+    }
+  }
+  dispatch('');
   return {
-    getState, dispatch, subscribe
+    getState, dispatch, addSubscriber, removeSubscriber
   }
 }
 

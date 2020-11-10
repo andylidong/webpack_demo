@@ -1,7 +1,7 @@
 /*
  * @Author: LD
  * @Date: 2020-08-24 11:14:32
- * @LastEditTime: 2020-11-03 16:31:17
+ * @LastEditTime: 2020-11-10 09:16:25
  * @LastEditors: LD
  * @FilePath: /webpack_demo/src/pages/web/index.js
  * @Description: 
@@ -11,7 +11,7 @@ import './index.css';
 import ReactDOM from 'react-dom';
 import Son from './components/Son';
 
-import { Provider, createStore } from './reduxs';
+import { usePrivider } from '@src/hook/useRedux';
 
 const initialState = { name: 'ld', age: 20 };
 
@@ -23,7 +23,7 @@ const reducer = (state = initialState, action) => {
     case actions.ADD:
       let { age, name } = state;
       age++;
-      name = `${name} ${age}`
+      name = `${name}1`
       return { ...state, age, name };
     default:
       return state;
@@ -33,19 +33,21 @@ const reducer = (state = initialState, action) => {
 
 const TestRedux = () => {
   return (
-    <div style={{ border: '1px solid red', width: '60%', margin: '20px auto', textAlign: 'center' }}>
+    <div style={{
+      border: '1px solid red',
+      width: '60%',
+      margin: '20px auto',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      textAlign: 'center'
+    }}>
       <p>父组件定义的值:{initialState.name}</p>
       <Son />
     </div>
   );
 }
 
-const App = () => {
-  return (
-    <Provider value={createStore(reducer)}>
-      <TestRedux />
-    </Provider >
-  );
-};
+const App = () => usePrivider(reducer, <TestRedux />);
 
 ReactDOM.render(<App />, document.querySelector('#root'))
