@@ -1,7 +1,7 @@
 /*
  * @Author: LD
  * @Date: 2020-10-28 16:09:31
- * @LastEditTime: 2020-11-10 09:19:42
+ * @LastEditTime: 2020-11-11 09:57:09
  * @LastEditors: LD
  * @FilePath: /webpack_demo/src/pages/web/components/Son.js
  * @Description: 
@@ -17,9 +17,10 @@ const mapPropsToState = ({ name, age }) => {
 };
 
 const Son = () => {
-  const [state, dispatch] = useConnect(mapPropsToState);
-  const { name, age } = state || {};
-  const onClick = () => dispatch({ type: 'ADD' })
+  const [{ name, age }, dispatch] = useConnect(mapPropsToState);
+
+  const onClick = () => dispatch({ type: 'ADD' });
+  
   return (
     <div style={{
       border: '1px solid blue',

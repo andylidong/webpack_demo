@@ -1,7 +1,7 @@
 /*
  * @Author: LD
  * @Date: 2020-10-28 16:09:45
- * @LastEditTime: 2020-11-10 09:21:54
+ * @LastEditTime: 2020-11-11 10:03:33
  * @LastEditors: LD
  * @FilePath: /webpack_demo/src/pages/web/components/GrandSon.js
  * @Description: 
@@ -16,17 +16,20 @@ const mapPropsToState = ({ age }) => {
 
 const GrandSon = () => {
 
-  const [state] = useConnect(mapPropsToState);
+  const [{ age }] = useConnect(mapPropsToState);
 
-  const { age } = state || {};
   return (
     <div style={{
       border: '1px solid green',
       width: '60%',
       margin: '50px',
-      textAlign: 'center'
+      padding: '10px',
+      display: 'flex',
+      // flexDirection: 'column',
+      justifyContent: 'center',
+      // alignItems: 'center',
     }}>
-      <p>孙组件,获取传递下来的值:{age}</p>
+      <span>孙组件,获取传递下来的值:{age}</span>
     </div>
   );
 }
