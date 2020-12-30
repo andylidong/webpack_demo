@@ -6,6 +6,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
+const ConsolePlugin = require('./plugins/ConsolePlugin');
+const ConsolePlugin1 = require('./plugins/ConsolePlugin1');
+
 const commonConfig = {
   entry: {
     web: './src/pages/web/index.js',
@@ -13,7 +16,8 @@ const commonConfig = {
   },
   output: {
     filename: 'static/js/[name].[hash:8].js',
-    // publicPath: "https://cdn.example.com/assets/",
+    publicPath: "https://cdn.example.com/assets/",
+    chunkFilename: '[name].bundle.js',
     path: path.join(__dirname, '../dist')
   },
   plugins: [
@@ -21,8 +25,8 @@ const commonConfig = {
     new MiniCssExtractPlugin({
       filename: 'static/css/[name].[hash:8].css',
       path: path.join(__dirname, '../dist'),
-      // publicPath: "https://cdn.example.com/assets/",
-      // chunkFilename: 'static/css/[id].[hash:8].css',
+      publicPath: "https://cdn.example.com/assets/",
+      chunkFilename: 'static/css/[id].[hash:8].css',
     }),
     new CleanWebpackPlugin(),
     new webpack.ProvidePlugin({
@@ -32,7 +36,9 @@ const commonConfig = {
       _: 'lodash'
     }),
     new webpack.NamedModulesPlugin(),  // 可配置也可不配置
-    new webpack.HotModuleReplacementPlugin() // 这个是必须配置的插件
+    new webpack.HotModuleReplacementPlugin(), // 这个是必须配置的插件
+    new ConsolePlugin(),
+    new ConsolePlugin1(),
   ],
   resolve: {
     // 解决编译问题
@@ -141,6 +147,6 @@ const commonConfig = {
       }
     ]
   },
-}
+};
 
 module.exports = commonConfig;

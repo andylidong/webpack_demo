@@ -4,7 +4,20 @@
  * @LastEditTime: 2020-11-09 17:38:24
  * @LastEditors: LD
  * @FilePath: /webpack_demo/src/pages/web/reduxs.js
- * @Description: 
+ * @Description:  
+ * 
+ * 横推武道
+ * 我能看见正确姿势
+ * 极拳暴君
+ * 没有人比我更懂缝合
+ * 横推从极道开始
+ * 
+ * 介绍
+ * 项目 
+ * 
+ * 
+ * 
+ * 
  */
 import React, { useState } from 'react';
 
@@ -17,9 +30,7 @@ export const connect = (mapPropsToState) => Component => () => {
       {
         (store) => {
           const { getState, dispatch, addSubscriber } = store;
-
           addSubscriber((data) => setState(data));
-
           return <Component {...mapPropsToState(state || getState())} dispatch={dispatch} />;
         }
       }

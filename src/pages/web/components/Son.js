@@ -6,7 +6,7 @@
  * @FilePath: /webpack_demo/src/pages/web/components/Son.js
  * @Description: 
  */
-import React from 'react';
+import React, { useEffect } from 'react';
 import GrandSon from "./GrandSon";
 
 import { useConnect } from '@src/hook/useRedux';
@@ -20,7 +20,20 @@ const Son = () => {
   const [{ name, age }, dispatch] = useConnect(mapPropsToState);
 
   const onClick = () => dispatch({ type: 'ADD' });
-  
+
+  const onClick1 = (e) => {
+    console.log('e: 1 ', e);
+    e.preventDefault();
+    console.log('e: 2 ', e);
+  };
+
+  useEffect(() => {
+    console.log('effect: ');
+    return () => {
+      console.log('cleanup: ');
+    };
+  }, []);
+
   return (
     <div style={{
       border: '1px solid blue',
@@ -31,7 +44,7 @@ const Son = () => {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-    }} onClick={onClick}>
+    }} onClick={onClick1}>
       <p>子组件，获取父组件的值:{name}，{age}</p>
       <GrandSon />
     </div>

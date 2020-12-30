@@ -18,6 +18,22 @@ const GrandSon = () => {
 
   const [{ age }] = useConnect(mapPropsToState);
 
+  const onClick1 = (e) => {
+    console.log('e: 3 ', e.stopPropagation());
+    e.stopPropagation();
+    e.preventDefault();
+    console.log('e: 4 ', e);
+  };
+
+  const load = (e) => {
+    console.log('e: 3', e);
+    e.stopPropagation();
+    e.preventDefault();
+    e.nativeEvent.stopImmediatePropagation();
+    console.log('e: 4', e);
+    window.location.href = 'https://www.baidu.com';
+  }
+
   return (
     <div style={{
       border: '1px solid green',
@@ -30,6 +46,7 @@ const GrandSon = () => {
       // alignItems: 'center',
     }}>
       <span>孙组件,获取传递下来的值:{age}</span>
+      <a onClick={load}>测试</a>
     </div>
   );
 }

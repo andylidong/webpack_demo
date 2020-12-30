@@ -1,16 +1,19 @@
 /*
  * @Author: LD
  * @Date: 2020-08-24 11:14:32
- * @LastEditTime: 2020-11-10 16:26:15
+ * @LastEditTime: 2020-11-13 11:58:30
  * @LastEditors: LD
  * @FilePath: /webpack_demo/src/pages/web/index.js
  * @Description: 
  */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './index.css';
 import { Button } from 'antd';
 import ReactDOM from 'react-dom';
 import Son from './components/Son';
+// import Demo from './components/Demo';
+import asyncComponent from '@src/hook/asyncComponent';
+const Demo = asyncComponent(() => import(/* webpackChunkName: "Demo" */ './components/Demo'));
 
 import { usePrivider } from '@src/hook/useRedux';
 
@@ -44,6 +47,7 @@ const TestRedux = () => {
       textAlign: 'center'
     }}>
       <Button type="primary">{'测   试'}</Button>
+      <Demo />
       <p>父组件定义的值:{initialState.name}</p>
       <Son />
     </div>
