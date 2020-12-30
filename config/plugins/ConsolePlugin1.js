@@ -3,12 +3,10 @@ const slog = require('single-line-log'); /* 单行打印 console */
 
 class ConsolePlugin1 {
   constructor(options = {}) {
-    console.log('options: 1', options);
     this.options = options;
   }
 
   apply(compiler) {
-    console.log('compiler: ', compiler);
     /**
      * Monitor file change 记录当前改动文件
      */

@@ -3,7 +3,6 @@ const slog = require('single-line-log'); /* 单行打印 console */
 
 class ConsolePlugin {
   constructor(options = {}) {
-    console.log('options: ', options);
     this.options = options;
   }
 
